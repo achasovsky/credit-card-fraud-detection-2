@@ -127,6 +127,13 @@ main-container > nav {
     padding-left: 0.9em;
     margin-left: -0.8em;
 }
+toc-title {
+  margin-bottom: 0.3em;
+  margin-left: -0.7em;
+  color: #23272D;
+  font-weight: 500;
+  border: none;
+}
 ul {
     list-style-type: disc;
     line-height: 1.5;
