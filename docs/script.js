@@ -20,9 +20,9 @@ function scrollToID(id) {
     });
 } 
 
-let observer = observer = new IntersectionObserver(elements => {
+let observer = new IntersectionObserver(elements => {
 
-  elements.forEach((element) => {
+  elements.forEach((element, i) => {
     console.log(element)
   })
   
