@@ -20,6 +20,17 @@ function scrollToID(id) {
     });
 } 
 
+let observer = observer = new IntersectionObserver(elements => {
+
+  elements.forEach((element) => {
+    console.log(element)
+  })
+  
+})
+
+let sections = document.querySelectorAll('section[id]')
+  
+observer.observe(sections)
 
 console.log('1')
 
