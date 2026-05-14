@@ -30,7 +30,7 @@
 <sub-container style='border-right: 1px solid #CFD7DE;'>
 <content-container style='text-align:right;'>
     <h1 id='title' style='text-align:right;'>
-      Credit Card Fraud Detection Dataset
+      1Credit Card Fraud Detection Dataset
     </h1>
     <h5 style='text-align:right;margin-top:-0.5em;'>
        2Разведочный анализ данных (EDA)
@@ -73,6 +73,7 @@
   <space></space>
   В работе используется популярный датасет Kaggle с информацией о банковских транзакциях. Датасет состоит из 31 переменной и 284807 элементов. Целевая переменная бинарна и не сбалансирована: 284315 нулевых значений против 492 единиц (0.172% от общего количества). Все предикторы являются количественными переменными. Пропущенные значения отсутствуют.
   <space></space>
+</section>
   <a
   href='https://https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud'
   target='_blank'>
@@ -81,8 +82,7 @@
   <h4>
     <i>Переменные</i>
   </h4>
-</section>
-<section id='time-variable'>
+
   <ul>
     <li><i>Time</i> - время, прошедшее с момента совершения первой транзакции;</li>
     <li><i>V1...V28</i> - переменные, полученные после преобразования сырых данных с помощью PCA;</li>
@@ -100,11 +100,12 @@
   
   <i>Time</i> - количественная переменная, единицы измерения - секунды. Пропущенные значения отсутствуют, почти половина значений - уникальные (45% от общего числа). Гистограмма показывает достаточно равномерное распределение данных в районе отметки в 4000 элементов с двумя минимумами около 15000 и 100000 секунд.
   <space></space>
-  <img-margin>
+
     <img src='img/01-explore/time_hist.png'>
-  </img-margin>
+
   <space></space>
   Отобразим число транзакций на единицу времени с помощью точечной диаграммы. В области плато число транзакций равно 7-8 на единицу времени, а в районе провалов - 1-3.
+  <section id='time-variable'>
   <space></space>
   <img-margin>
     <img src='img/01-explore/time_scatter.png'>
