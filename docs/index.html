@@ -30,7 +30,7 @@
 <sub-container style='border-right: 1px solid #CFD7DE;'>
   <content-container style='text-align:right;'>
       <h1 id='title' style='text-align:right;'>
-        1Credit Card Fraud Detection Dataset
+        2Credit Card Fraud Detection Dataset
       </h1>
       <h5 style='text-align:right;margin-top:-0.5em;'>
          Разведочный анализ данных (EDA)
@@ -249,6 +249,11 @@ function clickSize(img) {
       img.classList.toggle('change-size');
     }
 // Tracking sections with menu
+const options = {
+  root: null, // viewport
+  rootMargin: '0px',
+  threshold: 0.25 // 50% of the section must be visible
+};
 window.addEventListener('DOMContentLoaded', () => {
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
@@ -260,7 +265,7 @@ window.addEventListener('DOMContentLoaded', () => {
         document.querySelector(`nav li a[id="#${id}"]`).parentElement.classList.remove('active');
       }
     });
-  });
+  }, options);
     // Track all sections that have an `id` applied
     document.querySelectorAll('section[id]').forEach((section) => {
     observer.observe(section);
