@@ -30,7 +30,7 @@
 <sub-container style='border-right: 1px solid #CFD7DE;'>
   <content-container style='text-align:right;'>
       <h1 id='title' style='text-align:right;'>
-        3Credit Card Fraud Detection Dataset
+        4Credit Card Fraud Detection Dataset
       </h1>
       <h5 style='text-align:right;margin-top:-0.5em;'>
          Разведочный анализ данных (EDA)
@@ -91,10 +91,12 @@
   Данные разбиваются на два датасета в соотношении 3 к 7: обучающий (199364) и проверочный (85443).
   <space></space>
   Сначала исследуются переменные, для которых известен контекст. Это время совершения транзакции (<i>Time</i>), сумма транзакции (<i>Amount</i>) и метка мошенничества (<i>Class</i>).
-  <section id='dataset'></section>
+  
   <h2 id='time-variable'>
     Переменная Time
   </h2>
+
+<section id='dataset'></section>
   
   <i>Time</i> - количественная переменная, единицы измерения - секунды. Пропущенные значения отсутствуют, почти половина значений - уникальные (45% от общего числа). Гистограмма показывает достаточно равномерное распределение данных в районе отметки в 4000 элементов с двумя минимумами около 15000 и 100000 секунд.
 
@@ -119,10 +121,8 @@
   Преобразованная переменная <i>Time</i> выглядит следующим образом.
   <space></space>
     
-
     <img src='img/01-explore/time_datetime_hist.png'>
 
-  
 </section>
   
 
