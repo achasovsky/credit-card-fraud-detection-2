@@ -30,9 +30,11 @@ let observer = new IntersectionObserver(elements => {
 
 let sections = document.querySelectorAll('section[id]')
 
-logit(sections)
+sections.forEach((section, i) => {
+  observer.observe(section)
+})
   
-observer.observe(sections)
+
 
 console.log('1')
 
