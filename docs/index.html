@@ -33,7 +33,7 @@
       Credit Card Fraud Detection Dataset
     </h1>
     <h5 style='text-align:right;margin-top:-0.5em;'>
-       1Разведочный анализ данных (EDA)
+       2Разведочный анализ данных (EDA)
     </h5>
     <span
         style='display:inline-block;margin-top:0.8em;'>
@@ -41,7 +41,7 @@
             <span style='display:inline-block;'>
                 <img
                     src='img/logo-cards.png'
-                    style='width:1.7em;vertical-align:-0.575em;'>
+                    style='width:1.75em;vertical-align:-0.575em;'>
               <!-- style='width:1.5em;vertical-align:-0.35em; -->
               <!-- style='width:1.25em;vertical-align:-0.288em; -->
                 </span>
@@ -82,7 +82,7 @@
     <i>Переменные</i>
   </h4>
 </section>
-<section id='time'>
+<section id='time-variable'>
   <ul>
     <li><i>Time</i> - время, прошедшее с момента совершения первой транзакции;</li>
     <li><i>V1...V28</i> - переменные, полученные после преобразования сырых данных с помощью PCA;</li>
@@ -115,7 +115,7 @@
   Предположим, что минимальное число транзакций совершается в 0:00 часов - это соответствует двум минимумам на гистограмме и ориентировочно значениям 15000 и 100000 секунд. Если первая транзакция, время в секундах которой равно 0, была совершена в 20:00, то первая полночь (первый минимум гистограммы) приходится на 14400 секунд, а вторая - на 100800.
   <space></space>
   Преобразованная переменная <i>Time</i> выглядит следующим образом.
-
+  <space></space>
   <img-margin>
     <img src='img/01-explore/time_datetime_hist.png'>
   </img-margin>
