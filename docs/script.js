@@ -29,6 +29,8 @@ let observer = new IntersectionObserver(elements => {
 })
 
 let sections = document.querySelectorAll('section[id]')
+
+logit(sections)
   
 observer.observe(sections)
 
