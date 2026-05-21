@@ -1,67 +1,22 @@
 // Button 'Наверх'
 let mybutton = document.getElementById('toTocBtn');
-    // When the user scrolls down 300px from the top of the document, show the button
-window.onscroll = function() {scrollFunction()};
-function scrollFunction() {
-  if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
-    mybutton.style.display = "block";
-  } else {
-    mybutton.style.display = "none";
-  }
+
+// sections to activate TOC
+let sections = document.querySelectorAll('section[target]')
+let height = screen.height
+
+// Activate TOC on scroll
+window.onscroll = function() {
+
+  // top button
+  scrollFunction()
+
+  activateSection(sections, height)
+  
 }
 
-// Scroll to element (anchor 'href' analog)
-function scrollToID(id) {
-    let element = document.getElementById(id);
-    element.scrollIntoView({
-      block: 'start',
-      // behavior: 'smooth',
-      inline: 'start'
-    });
-} 
-
-let observer = new IntersectionObserver(elements => {
-
-  elements.forEach((element, i) => {
-    console.log(element)
-  })
-  
-})
-
-let sections = document.querySelectorAll('section[id]')
-
-sections.forEach((section, i) => {
-  observer.observe(section)
-})
-  
-
-
-console.log('1')
 
 
 
 
 
-
-// // Increase size of pictures
-// function clickSize(img) {
-//       img.classList.toggle('change-size');
-//     }
-// // Tracking sections with menu
-// window.addEventListener('DOMContentLoaded', () => {
-//   const observer = new IntersectionObserver(entries => {
-//     entries.forEach(entry => {
-//       const id = entry.target.getAttribute('id');
-//       // if (entry.intersectionRatio > 0) {
-//       if (entry.intersectionRatio > 0) {
-//         document.querySelector(`nav li a[id="#${id}"]`).parentElement.classList.add('active');
-//       } else {
-//         document.querySelector(`nav li a[id="#${id}"]`).parentElement.classList.remove('active');
-//       }
-//     });
-//   });
-//     // Track all sections that have an `id` applied
-//     document.querySelectorAll('section[id]').forEach((section) => {
-//     observer.observe(section);
-// });
-// });

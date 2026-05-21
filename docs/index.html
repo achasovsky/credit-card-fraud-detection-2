@@ -5,225 +5,332 @@
     <meta name="viewport" content="width=device-width">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Credit Card Fraud Detection Dataset</title>
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="index-bundle.css">
     <link rel="shortcut icon" type="image/x-icon" href="img/favicon/favicon.png">
-    <!-- <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script> -->
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 <body>
-<div id="content">
-    <div class="desktop" style='margin-bottom:10em;margin-top:1.8em'>
-<page-container>
-<main-container>
-<sub-container
-    id='general' 
-    style='text-align:right;scroll-margin-top:1.8em;'>
-<content-container>
-    <img 
-        src='img/header/header.png'
-        style='width:100%;border-radius:0.3em'>
-</content-container>
-</sub-container>
-</main-container>
-<main-container>
-<sub-container>
-<sub-container style='border-right: 1px solid #CFD7DE;'>
-  <content-container style='text-align:right;'>
-      <h1 id='title' style='text-align:right;'>
-        4Credit Card Fraud Detection Dataset
-      </h1>
-      <h5 style='text-align:right;margin-top:-0.5em;'>
-         Разведочный анализ данных (EDA)
-      </h5>
-      <span
-          style='display:inline-block;margin-top:0.8em;'>
-          <a href='https://github.com/achasovsky/credit-card-fraud-detection-dataset' target='_blank'>
-              <span style='display:inline-block;'>
-                  <img
-                      src='img/logo-cards.png'
-                      style='width:1.75em;vertical-align:-0.585em;'>
-                <!-- style='width:1.5em;vertical-align:-0.35em; -->
-                <!-- style='width:1.25em;vertical-align:-0.288em; -->
-                  </span>
-              <span style='margin-left:0.3em;font-size:0.85em'>
-                  Ссылка на репозиторий
-                  </span>
-              </a>
-              &emsp;
-          </span>
-      <span 
-          style='display:inline-block;margin-top:0.8em;'>
-          <a href='https://github.com/achasovsky' target='_blank'>
-              <span style='display:inline-block;'>
-                  <img src='img/logo-github.png'
-                       style='width:1.3em;vertical-align:-0.34em;'>
-                  </span>
-              <span style='margin-left:0.5em;font-size:0.85em'>
-                  Профиль Github 
-                  </span>
-              </a>
-          </span>
-  </content-container>
-<sub-container style='border-left: 1px solid #CFD7DE;'>
-<content-container>
-  <h2 id='dataset'>
-      Описание датасета
-  </h2>
-  <space></space>
-  В работе используется популярный датасет Kaggle с информацией о банковских транзакциях. Датасет состоит из 31 переменной и 284807 элементов. Целевая переменная бинарна и не сбалансирована: 284315 нулевых значений против 492 единиц (0.172% от общего количества). Все предикторы являются количественными переменными. Пропущенные значения отсутствуют.
-  <space></space>
-  <a
-  href='https://https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud'
-  target='_blank'>
-    Страница датасета на сайте Kaggle
-  </a>
-  <h4>
-    <i>Переменные</i>
-  </h4>
 
-  <ul>
-    <li><i>Time</i> - время, прошедшее с момента совершения первой транзакции;</li>
-    <li><i>V1...V28</i> - переменные, полученные после преобразования сырых данных с помощью PCA;</li>
-    <li><i>Amount</i> - сумма транзакции;</li>
-    <li><i>Class</i> - метка мошенничества (целевая переменная);</li>
-  </ul>
-  <space></space>
-  Данные разбиваются на два датасета в соотношении 3 к 7: обучающий (199364) и проверочный (85443).
-  <space></space>
-  Сначала исследуются переменные, для которых известен контекст. Это время совершения транзакции (<i>Time</i>), сумма транзакции (<i>Amount</i>) и метка мошенничества (<i>Class</i>).
-  
-  <h2 id='time-variable'>
-    Переменная Time
-  </h2>
+  <div class='y822lu' id='main'>
+    <div class='brchty'>
 
-<section id='dataset'></section>
-  
-  <i>Time</i> - количественная переменная, единицы измерения - секунды. Пропущенные значения отсутствуют, почти половина значений - уникальные (45% от общего числа). Гистограмма показывает достаточно равномерное распределение данных в районе отметки в 4000 элементов с двумя минимумами около 15000 и 100000 секунд.
+      <div class='lruuph'>
+        <img class='bo6u88' src='img/header/header.png'>
+      </div>
 
+      <div class='jr9sle frame-right'>
 
-  <space></space>
-  <space></space>
-    <img src='img/01-explore/time_hist.png'>
-  <space></space>
-  
-  Отобразим число транзакций на единицу времени с помощью точечной диаграммы. В области плато число транзакций равно 7-8 на единицу времени, а в районе провалов - 1-3.
-
-<section id='time-variable'>
-    
-  <space></space>
-    <img src='img/01-explore/time_scatter.png'>
-  <space></space>
-    
-  Учитывая, что данные берутся за два дня, а также принимая во внимание тот факт, что в ночные часы общее количество транзакций снижается, можно сделать предположение относительно времени суток и перевести имеющиеся секунды в часы и минуты.
-  <space0></space0>
-  Предположим, что минимальное число транзакций совершается в 0:00 часов - это соответствует двум минимумам на гистограмме и ориентировочно значениям 15000 и 100000 секунд. Если первая транзакция, время в секундах которой равно 0, была совершена в 20:00, то первая полночь (первый минимум гистограммы) приходится на 14400 секунд, а вторая - на 100800.
-  <space></space>
-  Преобразованная переменная <i>Time</i> выглядит следующим образом.
-  <space></space>
-    
-    <img src='img/01-explore/time_datetime_hist.png'>
-
-</section>
-  
-
-  <img-center>
-    <img src='img/01-explore/transactions_overview_per_hour.png'>
-  </img-center>
-
-  <img-margin>
-    <img src='img/01-explore/transactions_overview_per_hour.png'>
-  </img-margin>
-
-  <img-margin>
-    <img src='img/01-explore/transactions_fraud_per_100_by_hour.png'>
-  </img-margin>
-
-  <img-margin>
-    <img src='img/01-explore/transactions_simulation_count_per_hour.png'>
-  </img-margin>
-
-  <img-margin>
-    <img src='img/01-explore/transactions_simulation_probability_by_hour.png'>
-  </img-margin>
-
-  <img-margin>
-    <img src='img/01-explore/amount_median_per_hour.png'>
-  </img-margin>
-
-  <img-margin>
-    <img src='img/01-explore/amount_median_by_hour.png'>
-  </img-margin>
-
-  <img-margin>
-    <img src='img/01-explore/amount_median_frauds_by_hour.png'>
-  </img-margin>
-
-
-
-
-  
-
+        <div class='w7z02s a-end'>
         
+          <h1 class='header-title'>
+            Credit Card Fraud Detection Dataset
+          </h1>
+          
+          <h6 class='header-sub-title'>
+            Разведочный анализ данных (EDA)
+          </h6>
+          
+          <div>
+            <a href='https://github.com/achasovsky/credit-card-fraud-detection-dataset' target='_blank'>
+              <img src='img/logo-cards.png' style='width:1.6rem;height:1.5rem;vertical-align:-0.5em;'>
+              <div class='header-repository-link'>Ссылка на репозиторий</div>
+            </a>
+            <a class='ms-15' href='https://github.com/achasovsky' target='_blank'>
+              <img src='img/logo-github.png' style='width:1.3em;vertical-align:-0.34em;'>
+              <div class='header-repository-link'>Профиль Github</div>
+            </a>
+          </div>
+          
+        </div>
+
+        <div class='dd5v71 mt-1 frame-left'>
+
+          <section target='dataset'>
+            
+            <h2 class='mt-0' id='dataset'>
+                Описание датасета
+            </h2>
+
+            В работе используется популярный датасет Kaggle с информацией о банковских транзакциях.
+            <space></space>
+
+            <a
+              class='j-start'
+              href='https://https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud'
+              target='_blank'>
+              Страница датасета на сайте Kaggle
+            </a>
+
+            <space></space>
+
+            <ul>
+              <li>Число элементов: 284807;</li>
+              <li>Количество переменных: 31;</li>
+              <li>Целевая переменная: категориальная (бинарная).</li>
+            </ul>
+
+            <space2></space2>
+
+            <img class='table' src='img/01-explore/screens/data_raw.png'>
+
+            <space2></space2>
+          
+            <ul>
+              <li><i>Time</i> - время, прошедшее с момента совершения первой транзакции;</li>
+              <li><i>V1...V28</i> - переменные, полученные после преобразования сырых данных с помощью PCA;</li>
+              <li><i>Amount</i> - сумма транзакции;</li>
+              <li><i>Class</i> - метка мошенничества (целевая переменная);</li>
+            </ul>
+            
+            <space></space>
+            Целевая переменная бинарна и не сбалансирована: 284315 нулевых значений против 492 единиц (0.172% от общего количества). Все предикторы являются количественными переменными. Пропущенные значения отсутствуют.
+            <space></space>
+            Данные разбиваются на два датасета в соотношении 3 к 7: обучающий (199364) и проверочный (85443).
+            <space></space>
+            В первую очередь исследуются переменные с известным контекстом, а именно: время совершения транзакции (<sb><i>Time</i></sb>), сумма транзакции (<sb><i>Amount</i></sb>) и метка мошенничества (<sb><i>Class</i></sb>).
+          
+          </section>
+            
+          <section target='time-variable'>
+            
+            <h2 id='time-variable'>
+              Переменная Time
+            </h2>
+            
+            <sb><i>Time</i></sb> - количественная переменная, единицы измерения - секунды.
+            
+            <space></space>
+            Пропущенные значения отсутствуют, почти половина значений - уникальные (45% от общего числа). Гистограмма показывает достаточно равномерное распределение данных в районе отметки в 4000 элементов с двумя минимумами около 15000 и 100000 секунд.
+            <space></space>
+            
+            <img src='img/01-explore/time_hist.png'>
+
+            <space></space>
+            Отобразим количество транзакций на единицу времени с помощью точечной диаграммы: в области плато это количество примерно 7-8 на единицу времени, а в районе минимумов - примерно 1-3.
+            <space></space>
+
+            <img class='chart' src='img/01-explore/time_scatter.png'>
+            
+            <space></space>
+            В описании датасета указано, что данные собирались в течение двух дней. Также известно, что в ночные часы общее количество транзакций снижается. Исходя из этого можно сделать предположение относительно времени суток и перевести имеющиеся секунды в часы и минуты.
+            <space></space>
+            Допустим, что минимум транзакций приходится на 0:00 часов, что соответствует двум минимумам на гистограмме и ориентировочно значениям 15000 и 100000 секунд. Если 15000 секунд - это 0:00 часов, тогда 0 секунд - 19:50. Для удобства можно принять, что 0 секунд - это не 19:50, а 20:00 (в данном случае такая поправка не критична), тогда первые 0:00 приходятся на 14400 секунд, а вторые - на 100800 секунд. В итоге получается, что первая транзакция совершена в 20:00, последняя - в 8:55. 
+            <space></space>
+            Преобразованная переменная <sb><i>Time</i></sb> выглядит следующим образом.
+            <space></space>
+
+            <img class='chart' src='img/01-explore/time_datetime_hist.png'>
+          
+          </section>
+          
+          <section target='class-variable'>
+          
+            <h2 id='class-variable'>
+              Переменная Class
+            </h2>
+          
+            <sb><i>Class</i></sb> - целевая переменная, в которой хранится информация о том, является ли транзакция мошеннической. 
+            <space></space>
+            В течение дня количество мошеннических транзакций колеблется в диапазоне от 5 до 15 в час, утром и вечером волатильность несколько выше. Ночью количество мошеннических транзакций находится в пределах от 0 до 10 за исключением нескольких выбросов. Два аномально высоких значения в 7:00 и 22:00 часов первого дня.
+            <space></space>
+
+            <img src='img/01-explore/transactions_overview_per_hour.png'>
+          
+            <space></space>
+            Отобразим относительное количество мошеннических транзакций на сто легитимных. Число мошеннических транзакций, совершенных вечером и ночью, заметно выше, чем утром и днем (при этом показатели 7 и 19 часов немного выше, чем в остальные дневные часы). 
+            <space></space>
+            Создадим две дополнительные переменные: в первой ночными считаются транзакции с 21 до 3 утра (выделены цветом на графике), во второй - с 19 до 7 утра. Различия между долей мошеннических и долей легитимных транзакций для обеих переменных статистически значимы (\( p = 0.000 \)).
+            <space></space>
+
+            <img src='img/01-explore/transactions_fraud_per_100_by_hour.png'>
+          
+            <h4>
+              <i>Ресэмплинг</i>
+            </h4>
+            
+            Теперь, когда имеется представление об общем и удельном числе мошеннических транзакций, можно провести симуляцию ситуации, при которой выборки мошеннических и легальных транзакций имеют одинаковый размер.
+            <space></space>
+            С помощью ресэмплинга можно сравнить распределения транзакций обоих классов по времени, а также гипотетически оценить вероятность встретить мошенническую транзакцию в каждом часе.
+          
+            <h5>
+              <i>Ресэмплинг №1</i>
+            </h5>
+          
+            <ol>
+              <li>Из совокупности легальных транзакций случайным образом формируем 1000 выборок, размер которых равен числу мошеннических транзакций (384 элемента);</li>
+              <li>Для каждого часа считаем среднее число транзакций и 95% доверительный интервал с помощью бутстрэпа (\( n = 1000 \)).</li>
+            </ol>
+
+            <space></space>
+            Таким образом получаем оценку среднего количества легальных транзакций для каждого часа при гипотетическом условии равенства размеров исходных выборок мошеннических и легальных транзакций.
+            <space></space>
+          
+            <img src='img/01-explore/transactions_simulation_count_per_hour.png'>
+          
+            <space></space>
+            График показывает, что в подобной гипотетичекой ситуации число мошеннических тразнакций обычно превышает число легальных примерно с 21 часов вечера до 3 часов утра.
+          
+            <h5>
+              <i>Ресэмплинг №2</i>
+            </h5>
+          
+            <ol>
+              <li>Из совокупности легальных транзакций случайным образом формируем выбороку, размер которой равен числу мошеннических транзакций (384 элемента);</li>
+              <li>Объединяем эту выборку с выборкой мошеннических транзакций;</li>
+              <li>Для каждого часа считаем вероятность встретить мошенническую транзакцию;</li>
+              <li>Заносим получившееся среднее в результирующий датасет;</li>
+              <li>Повторяем пункты с 1 по 3 1000 раз;</li>
+              <li>Для полученной выборки из 1000 значений считаем среднюю вероятность для каждого часа и 95% доверительный интервал с помощью бутстрэпа (\( n = 1000 \)).</li>
+            </ol>
+
+            <space></space>
+            На графике видно, что при такой гипотетической ситуации в период с 22 до 24 часов вероятность встретить мошенническую транзакцию более 70%.
+            <space></space>
+
+            <img src='img/01-explore/transactions_simulation_probability_by_hour.png'>
+          
+          </section>
+          
+          <section target='amount-variable'>
+          
+            <h2 id='amount-variable'>
+              Переменная Amount
+            </h2>
+          
+            <sb><i>Amount</i></sb> - количественная переменная. Пропущенные значения отсутствуют.
+            <space></space>
+          
+            <img src='img/01-explore/amount_per_hour.png'>
+
+            <space></space>
+            Сильный перекос вправо, форма похожа на экспоненциальное распределение.
+            <space></space>
+
+            <img src='img/01-explore/amount_hist.png'>
+
+            <space></space>
+            96.7% значений находятся в интервале от 0 до 500.
+            <space></space>
+
+            <img src='img/01-explore/amount_hist_a.png'>
+
+            <space></space>
+            Медиана достигает суточного максимума в 5-6 часов утра и плавно снижается к вечеру.
+            <space></space>
+
+            <img src='img/01-explore/amount_median_per_hour.png'>
+          
+            <img src='img/01-explore/amount_median_by_hour.png'>
+
+            <space></space>
+            Медиана мошеннических транзакций в большинстве случаев либо выше, либо значитльно выше легитимных, особенно во второй половине дня и вечером.
+            <space></space>
+            
+            <img src='img/01-explore/amount_median_frauds_by_hour.png'>
+          
+            <space></space>
+            Создадим две дополнительные переменные:
+            <space></space>
+          
+            <ul>
+              <li><sb><i>AmountMedianByHour</i></sb> - медиана переменной Amount для каждого часа;</li>
+              <li><i><sb>AmountFracMedianByHour</sb></i> - отношение величины Amount к медиане соответствующего часа.</li>
+            </ul>
+
+            <space></space>
+            Для легитимных транзакций эта величина колеблется в интервале от 3 до 5. Для мошеннических транзакций как и в случае медианы повторяются экстремальные значения второй половины дня и вечера, а также добавляются ночные транзакции с 0 до 3 часов.
+            <space></space>
+            
+            <img src='img/01-explore/amount_frac_median_by_hour.png'>
+          
+            <h4>
+              <i>Дискретизация</i>
+            </h4>
+          
+            Создадим дополнительную переменную <i><sb>AmountCategory</sb></i>, которая рассчитывается следующим образом:
+            <space></space>
+            
+            <ol>
+              <li>Считается натуральный логарифм от <i>Amount</i>;</li>
+              <li>Полученный результат округляется до целого.</li>
+            </ol>
+
+            <space></space>
+            Новая переменная состоит из 15 уникальных значений (категорий). Практически все значения находятся в интервале от 5 до 12.
+            <space></space>
+
+            <img src='img/01-explore/amount_categories.png'>
+
+            <space></space>
+            Также создаим переменную <i><sb>FraudPerHundredByCategory</sb></i>, в которой будет храниться относительное число мошеннических транзакций на каждые сто легитимных для каждой из 15 категорий, а также нулевая категория - это транзакциии, Amount которых равен нулю.
+            <space></space>
+            
+            <img src='img/01-explore/amount_categories_frac_fraud.png'>
+          
+            <space></space>
+            Категории с 1 по 4 имеют высокий <i><sb>FraudPerHundredByCategory</sb></i>, но количество транзакций в них невелико. Интереснее категории с 11 по 14, а также 6 категория. Похоже, что вероятность встретить мошенническую транзакцию выше для сумм от 0.60 до 1.60 и от 90 до 5000.
+            <space></space>
+            
+            Данные по категориям приведены в таблице.
+            <space1></space1>
+
+            <img class='table' src='img/01-explore/screens/amount_categories_table.png'>
+            <space6></space6>
+            
+            <h4>
+              <i>Часто встречаемые значения</i>
+            </h4>
+          
+            Отобразим наиболее часто встречающиеся значения переменной Amount для мошеннических транзакций.
+            <space1></space1>
+
+            <img class='table' src='img/01-explore/screens/amount_common_fraud_per_hundred.png'>
+            <space6></space6>
+
+            Два наиболее часто встречающихся - 1 и 99.99 входят в категорию 6 и 11, которые ранее были отмечены, как транзакции с повышенным риском мошенничества. Создадим дополнительную переменную <i><sb>AmountNightyNine</sb></i>, в которой будем учитывать все транзакции с Amount, равным 99.99.
+
+            <h4>
+              <i>Целые и дробные значения Amount</i>
+            </h4>
+
+            Доля мошеннических транзакций сто легитимных для целочисленных сумм равна 0.26, а для десятичных - 0.16. Отличия статистически значимы (\( p = 0.000 \)). Создадим дополнительную переменную <i><sb>AmountInteger</sb></i>.
 
 
+            
+            
+          </section>
+          
+        </div>
 
+        <div class='jr0660'>
+          <div class='vpw3fu'>
+            <div class='toc'>
+              <ul id='toc-id'>
+                <li class='toc-title'>
+                  Содержание
+                </li>
+                <li onclick="scrollToID('dataset')" id='#dataset'>Описание датасета</li>
+                <li class='toc-title'>
+                  Исследование и подготовка данных
+                </li>
+                <li onclick="scrollToID('time-variable')" id='#time-variable'>Переменная Time</li>
+                <li onclick="scrollToID('class-variable')" id='#class-variable'>Переменная Class</li>
+                <li onclick="scrollToID('amount-variable')" id='#amount-variable'>Переменная Amount</li>
+                <li class='toc-title'>
+                  Главные компоненты
+                </li>
+              </ul>
+              <div id="toTocBtn" class='button' onclick="scrollToID('main')">Наверх</div>
+            </div>
+          </div>
+        </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-    
-
-
-</content-container>
-</sub-container>
-</sub-container>
-</sub-container>
-<!-- Right part -->
-<nav class='toc'>
-    <ol>
-        <li style='margin-bottom:0.3em;margin-left:-0.7em;color:#23272D;font-weight:500;border:none;'>
-            Содержание</li>
-        <li><a onclick="scrollToID('dataset')" id='#dataset'>Описание датасета</a></li>
-        <!-- <li class='toc-title'>
-            Исследование и подготовка данных</li> -->
-        <li><a onclick="scrollToID('time-variable')" id='#time-variable'>Переменная Time</a></li>
-    
-       
-    
-    
-        
-        
-      </ol>
-        <button
-        id="toTocBtn"
-        style='font-size:1em;bottom:2em;margin:0 0 0 2.5em;padding:1.2em 1.4em 1.3em 1.5em;border-radius:0.4em;'
-        onclick="scrollToID('general')">
-        Наверх
-            </button>
-</nav>
-
-
-
-    
-
-</main-container>
-</page-container>
-</div>
-
-<!-- Mobile Version 380px: MobVer 1 -->
-<div class='mobile_device_380px' style='margin-bottom:10em;'>
+      </div>
+      
     </div>
-</div>
+  </div>
 
+  <script src='functions.js'></script>
   <script src='script.js'></script>
   
 </body>
