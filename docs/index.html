@@ -91,11 +91,15 @@
           
           </section>
             
-          <section target='time-variable'>
-            
-            <h2 id='time-variable'>
-              Переменная Time
+          <section target='time-class-amount-variables'>
+
+            <h2 id='time-class-amount-variables'>
+              Переменные Time, Class, Amount
             </h2>
+            
+            <h3>
+              <i>Переменная Time</i>
+            </h3>
             
             <sb><i>Time</i></sb> - количественная переменная, единицы измерения - секунды.
             
@@ -121,13 +125,9 @@
 
             <img class='chart' src='img/01-explore/time_datetime_hist.png'>
           
-          </section>
-          
-          <section target='class-variable'>
-          
-            <h2 id='class-variable'>
-              Переменная Class
-            </h2>
+            <h3 id='class-variable'>
+              <i>Переменная Class</i>
+            </h3>
           
             <sb><i>Class</i></sb> - целевая переменная, в которой хранится информация о том, является ли транзакция мошеннической. 
             <space></space>
@@ -189,13 +189,9 @@
 
             <img src='img/01-explore/transactions_simulation_probability_by_hour.png'>
           
-          </section>
-          
-          <section target='amount-variable'>
-          
-            <h2 id='amount-variable'>
-              Переменная Amount
-            </h2>
+            <h3 id='amount-variable'>
+              <i>Переменная Amount</i>
+            </h3>
           
             <sb><i>Amount</i></sb> - количественная переменная. Пропущенные значения отсутствуют.
             <space></space>
@@ -248,14 +244,14 @@
             </h4>
           
             Создадим дополнительную переменную <i><sb>AmountCategory</sb></i>, которая рассчитывается следующим образом:
-            <space></space>
+            <space01></space01>
             
             <ol>
               <li>Считается натуральный логарифм от <i>Amount</i>;</li>
               <li>Полученный результат округляется до целого.</li>
             </ol>
 
-            <space></space>
+            <space01></space01>
             Новая переменная состоит из 15 уникальных значений (категорий). Практически все значения находятся в интервале от 5 до 12.
             <space></space>
 
@@ -287,7 +283,9 @@
             <img class='table' src='img/01-explore/screens/amount_common_fraud_per_hundred.png'>
             <space6></space6>
 
-            Два наиболее часто встречающихся - 1 и 99.99 входят в категорию 6 и 11, которые ранее были отмечены, как транзакции с повышенным риском мошенничества. Создадим дополнительную переменную <i><sb>AmountNightyNine</sb></i>, в которой будем учитывать все транзакции с Amount, равным 99.99.
+            Два наиболее часто встречающихся - 1 и 99.99 входят в категорию 6 и 11, которые ранее были отмечены, как транзакции с повышенным риском мошенничества.
+            <space02></space02>
+            Создадим дополнительную переменную <i><sb>AmountNightyNine</sb></i>, в которой будем учитывать все транзакции с Amount, равным 99.99.
 
             <h4>
               <i>Целые и дробные значения Amount</i>
@@ -295,9 +293,14 @@
 
             Доля мошеннических транзакций на сто легитимных для целочисленных сумм равна 0.26, а для десятичных - 0.16. Отличия статистически значимы (\( p = 0.000 \)). Создадим дополнительную переменную <i><sb>AmountInteger</sb></i>.
 
+          </section>
 
-            
-            
+          <section target='principal-components'>
+
+            <h2 id='principal-components'>
+              Главные компоненты
+            </h2>
+
           </section>
           
         </div>
@@ -313,12 +316,8 @@
                 <li class='toc-title'>
                   Исследование и подготовка данных
                 </li>
-                <li onclick="scrollToID('time-variable')" id='#time-variable'>Переменная Time</li>
-                <li onclick="scrollToID('class-variable')" id='#class-variable'>Переменная Class</li>
-                <li onclick="scrollToID('amount-variable')" id='#amount-variable'>Переменная Amount</li>
-                <li class='toc-title'>
-                  Главные компоненты
-                </li>
+                <li onclick="scrollToID('time-class-amount-variables')" id='#time-class-amount-variables'>Переменные Time, Class, Amount</li>
+                <li onclick="scrollToID('principal-components')" id='#principal-components'>Главные компоненты</li>
               </ul>
               <div id="toTocBtn" class='button' onclick="scrollToID('main')">Наверх</div>
             </div>
