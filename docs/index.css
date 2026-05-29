@@ -171,6 +171,15 @@ body * {
 .img-width-100 {
   width: 100%!important;
 }
+.tables-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: evenly;
+  align-items: start;
+  width: 100%;
+  flex-grow: 1;
+  align-self: stretch;
+}
 
 
 
